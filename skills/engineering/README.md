@@ -11,3 +11,4 @@ Skills I use daily for code work.
 - **[to-issues](./to-issues/SKILL.md)** — Break any plan, spec, or PRD into independently-grabbable GitHub issues using vertical slices.
 - **[to-prd](./to-prd/SKILL.md)** — Turn the current conversation context into a PRD and submit it as a GitHub issue.
 - **[zoom-out](./zoom-out/SKILL.md)** — Tell the agent to zoom out and give broader context or a higher-level perspective on an unfamiliar section of code.
+- **[coding-fundamentals-tutorial](./coding-fundamentals-tutorial/SKILL.md)** — Step-by-step Python programming tutorial that teaches concepts interactively and builds toward real apps.
