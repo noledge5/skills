@@ -1,0 +1,13 @@
+{
+  "name": "mattpocock-skills",
+  "owner": {
+    "name": "Matt Pocock"
+  },
+  "plugins": [
+    {
+      "name": "mattpocock-skills",
+      "source": "./",
+      "description": "Small, composable agent skills for real engineering — grilling sessions, TDD, triage, issue writing, architecture reviews, and more."
+    }
+  ]
+}
