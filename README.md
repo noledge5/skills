@@ -37,6 +37,25 @@ npx skills@latest add mattpocock/skills
 
 4. Bam - you're ready to go.
 
+## Other Ways To Install
+
+The skills.sh installer above copies skills into your agent's config. If you use Claude Code, there are two more ways to get them:
+
+### As a Claude Code plugin
+
+Installs the whole set as slash commands, available in every project:
+
+```
+/plugin marketplace add mattpocock/skills
+/plugin install mattpocock-skills@mattpocock-skills
+```
+
+Or, from a local clone: `claude --plugin-dir path/to/this/repo`.
+
+### Working on this repo (including Claude Code on the web)
+
+The repo ships a `.claude/skills/` directory (symlinks to every promoted skill), so any Claude Code session opened *in this repo* — terminal, desktop app, or [claude.ai/code](https://claude.ai/code) — picks the skills up automatically as project skills. No install step needed.
+
 ## Why These Skills Exist
 
 I built these skills as a way to fix common failure modes I see with Claude Code, Codex, and other coding agents.
