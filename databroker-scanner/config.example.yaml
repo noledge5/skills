@@ -1,0 +1,30 @@
+# DataBrokerScanner configuration. Copy to config.yaml and adjust.
+# config.yaml is gitignored so your settings stay local.
+
+# --- Browser (only used by automated/assisted tiers, Phase 2+) ---
+headless: false          # assisted mode needs a visible window; keep false
+slowmo_ms: 0
+proxy: null              # e.g. "http://user:pass@host:port" or null
+browser: chromium
+
+# --- Concurrency & politeness ---
+# Conservative on purpose: this is a self-audit, not a crawler.
+parallel: 2              # max brokers scanned at once
+per_domain_delay_s: 4.0  # minimum seconds between requests to the same host
+timeout_ms: 30000
+retry: 3                 # transient errors only (timeout/5xx); never 403/429/CAPTCHA
+
+# --- Output ---
+screenshot: true
+save_html: true
+save_json: true
+save_csv: true
+
+# --- Storage ---
+db_path: results/scanner.db
+output_dir: reports
+screenshot_dir: screenshots
+
+# --- Compliance ---
+respect_robots: true     # do not automate sites whose robots.txt disallows it
+user_agent: "DataBrokerScanner/0.1 (+https://github.com/noledge5/databroker-scanner; personal-privacy-audit)"

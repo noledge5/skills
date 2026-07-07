@@ -1,0 +1,69 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "databroker-scanner"
+version = "0.1.0"
+description = "Consent-based personal privacy self-audit for people-search / data-broker sites, with direct opt-out links."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "noledge5" }]
+keywords = ["privacy", "gdpr", "ccpa", "data-broker", "opt-out", "osint-defense"]
+
+# Core dependencies keep the tool installable and runnable WITHOUT a browser.
+# The optout_only tier and all reporting work with just these.
+dependencies = [
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "typer>=0.12",
+    "rich>=13.7",
+    "jinja2>=3.1",
+    "pyyaml>=6.0",
+    "python-dateutil>=2.9",
+]
+
+[project.optional-dependencies]
+# Browser-driven scanning (automated/assisted tiers) is opt-in.
+# NOTE: no undetected-playwright and no user-agent spoofing — this tool does
+# not circumvent bot-detection. See README "Scope & ethics".
+browser = [
+    "playwright>=1.44",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.2",
+    "tenacity>=8.3",
+    "aiofiles>=23.2",
+    "pillow>=10.3",
+]
+dev = [
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+scanner = "databroker_scanner.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/databroker_scanner"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/databroker_scanner/brokers/registry.yaml" = "databroker_scanner/brokers/registry.yaml"
+"src/databroker_scanner/reporting/templates" = "databroker_scanner/reporting/templates"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
+# B008: typer.Option in defaults is the intended Typer idiom.
+# B024: Broker is a shared base with concrete behaviour, not a pure ABC.
+# UP042: `str, Enum` is used deliberately for broad compatibility.
+ignore = ["B008", "B024", "UP042"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

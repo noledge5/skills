@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DataBrokerScanner report — {{ person_name }}</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font-family: system-ui, sans-serif; margin: 0; padding: 2rem; line-height: 1.5; }
+  h1 { margin: 0 0 .25rem; }
+  .meta { color: #888; margin-bottom: 1.5rem; }
+  .cards { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .card { border: 1px solid #8884; border-radius: 12px; padding: 1rem 1.25rem; min-width: 8rem; }
+  .card .n { font-size: 2rem; font-weight: 700; }
+  input { padding: .5rem .75rem; border-radius: 8px; border: 1px solid #8886; width: 100%; max-width: 24rem; margin-bottom: 1rem; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid #8883; vertical-align: top; }
+  th { position: sticky; top: 0; background: Canvas; }
+  .badge { display: inline-block; padding: .1rem .5rem; border-radius: 999px; font-size: .8rem; }
+  .found { background: #d33; color: #fff; }
+  .optout_only { background: #679; color: #fff; }
+  .needs_review { background: #b80; color: #fff; }
+  .skipped, .not_found { background: #8884; }
+  a.btn { display: inline-block; padding: .25rem .6rem; border: 1px solid #679; border-radius: 8px; text-decoration: none; }
+  .disclaimer { margin-top: 2rem; font-size: .85rem; color: #888; }
+</style>
+</head>
+<body>
+  <h1>Privacy self-audit</h1>
+  <div class="meta">Subject: <strong>{{ person_name }}</strong> · generated {{ generated_at }}</div>
+
+  <div class="cards">
+    <div class="card"><div class="n">{{ found|length }}</div>likely listings</div>
+    <div class="card"><div class="n">{{ optout|length }}</div>opt-out targets</div>
+    <div class="card"><div class="n">{{ matches|length }}</div>brokers checked</div>
+  </div>
+
+  <input id="filter" type="search" placeholder="Filter by broker name…" oninput="filterRows()">
+
+  <table id="report">
+    <thead>
+      <tr><th>Broker</th><th>Status</th><th>Confidence</th><th>Profile</th><th>Opt-out</th></tr>
+    </thead>
+    <tbody>
+    {% for m in matches %}
+      <tr>
+        <td>{{ m.broker_name }}</td>
+        <td><span class="badge {{ m.status }}">{{ m.status }}</span></td>
+        <td>{{ m.confidence }}{% if m.confidence_band %} ({{ m.confidence_band }}){% endif %}</td>
+        <td>{% if m.profile_url %}<a href="{{ m.profile_url }}" rel="noopener">{{ m.profile_name or 'view' }}</a>{% else %}—{% endif %}</td>
+        <td>{% if m.optout_url %}<a class="btn" href="{{ m.optout_url }}" rel="noopener">Opt out</a>{% else %}—{% endif %}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <p class="disclaimer">
+    This report lists publicly accessible information only. It was produced without
+    bypassing logins, CAPTCHAs or bot-protection. Use it solely to request removal of
+    your own data. Opt-out URLs marked unverified in the registry should be checked
+    before use.
+  </p>
+
+  <script>
+    function filterRows() {
+      const q = document.getElementById('filter').value.toLowerCase();
+      for (const row of document.querySelectorAll('#report tbody tr')) {
+        row.style.display = row.cells[0].textContent.toLowerCase().includes(q) ? '' : 'none';
+      }
+    }
+  </script>
+</body>
+</html>

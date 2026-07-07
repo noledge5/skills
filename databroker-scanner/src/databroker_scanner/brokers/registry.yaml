@@ -1,0 +1,391 @@
+# Broker registry — the single source of truth for broker metadata.
+#
+# mode:
+#   automated   -> robots.txt permits automated fetch; custom parser required
+#   assisted    -> restrictive ToS/robots; opened in a visible browser for the
+#                  user to review (human-in-the-loop, NO bot-detection bypass)
+#   optout_only -> no scan at all; curated opt-out / data-access deep link only
+#
+# verified: has the opt-out URL been human-checked? Unverified entries are shown
+# with a warning so users are never silently sent to a stale page. Verify and
+# flip to true as you confirm each URL.
+#
+# In v1 no broker is marked "automated": promotion to automated requires a
+# per-site robots.txt check (Phase 3). Until then everything scan-related runs
+# in assisted mode.
+
+# ---------------------------------------------------------------------------
+# US people-search sites (assisted)
+# ---------------------------------------------------------------------------
+- slug: spokeo
+  name: Spokeo
+  website: https://www.spokeo.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.spokeo.com/optout
+  optout_type: form
+  requires_captcha: true
+  verified: true
+
+- slug: whitepages
+  name: Whitepages
+  website: https://www.whitepages.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.whitepages.com/suppression-requests
+  optout_type: form
+  verified: true
+
+- slug: beenverified
+  name: BeenVerified
+  website: https://www.beenverified.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.beenverified.com/app/optout/search
+  optout_type: form
+  verified: true
+
+- slug: truthfinder
+  name: TruthFinder
+  website: https://www.truthfinder.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.truthfinder.com/opt-out/
+  optout_type: form
+  verified: true
+
+- slug: radaris
+  name: Radaris
+  website: https://radaris.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://radaris.com/control/privacy
+  optout_type: form
+  verified: true
+
+- slug: peekyou
+  name: PeekYou
+  website: https://www.peekyou.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.peekyou.com/about/contact/optout/
+  optout_type: form
+  verified: true
+
+- slug: nuwber
+  name: Nuwber
+  website: https://nuwber.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://nuwber.com/removal/link
+  optout_type: form
+  verified: true
+
+- slug: instantcheckmate
+  name: Instant Checkmate
+  website: https://www.instantcheckmate.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.instantcheckmate.com/opt-out/
+  optout_type: form
+  verified: true
+
+- slug: peoplelooker
+  name: PeopleLooker
+  website: https://www.peoplelooker.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.peoplelooker.com/f/optout/search
+  optout_type: form
+  verified: true
+
+- slug: ussearch
+  name: US Search
+  website: https://www.ussearch.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.ussearch.com/opt-out/
+  optout_type: form
+  verified: true
+
+- slug: intelius
+  name: Intelius
+  website: https://www.intelius.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.intelius.com/opt-out/
+  optout_type: form
+  verified: true
+
+- slug: peoplefinders
+  name: PeopleFinders
+  website: https://www.peoplefinders.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.peoplefinders.com/opt-out
+  optout_type: form
+  verified: true
+
+- slug: familytreenow
+  name: FamilyTreeNow
+  website: https://www.familytreenow.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.familytreenow.com/optout
+  optout_type: form
+  verified: true
+
+- slug: fastpeoplesearch
+  name: FastPeopleSearch
+  website: https://www.fastpeoplesearch.com
+  country: US
+  category: people-search
+  mode: assisted
+  search_url_template: https://www.fastpeoplesearch.com/name/{firstname}-{lastname}
+  optout_url: https://www.fastpeoplesearch.com/removal
+  optout_type: form
+  verified: true
+
+- slug: truepeoplesearch
+  name: TruePeopleSearch
+  website: https://www.truepeoplesearch.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.truepeoplesearch.com/removal
+  optout_type: form
+  verified: true
+
+- slug: cyberbackgroundchecks
+  name: CyberBackgroundChecks
+  website: https://www.cyberbackgroundchecks.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.cyberbackgroundchecks.com/removal
+  optout_type: form
+  verified: true
+
+- slug: smartbackgroundchecks
+  name: SmartBackgroundChecks
+  website: https://www.smartbackgroundchecks.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.smartbackgroundchecks.com/optout
+  optout_type: form
+  verified: true
+
+- slug: searchpeoplefree
+  name: SearchPeopleFree
+  website: https://www.searchpeoplefree.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.searchpeoplefree.com/opt-out
+  optout_type: form
+  verified: false
+
+- slug: checkpeople
+  name: CheckPeople
+  website: https://www.checkpeople.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.checkpeople.com/opt-out
+  optout_type: form
+  verified: false
+
+- slug: clustrmaps
+  name: ClustrMaps
+  website: https://clustrmaps.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://clustrmaps.com/bl/opt-out
+  optout_type: form
+  verified: false
+
+- slug: anywho
+  name: AnyWho
+  website: https://www.anywho.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.intelius.com/opt-out/
+  optout_type: form
+  verified: false
+  notes: Operated under the Intelius/PeopleConnect family; opt-out routes via Intelius.
+
+- slug: addresses
+  name: Addresses.com
+  website: https://www.addresses.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.addresses.com/optout.php
+  optout_type: form
+  verified: false
+
+- slug: zabasearch
+  name: ZabaSearch
+  website: https://www.zabasearch.com
+  country: US
+  category: people-search
+  mode: assisted
+  optout_url: https://www.intelius.com/opt-out/
+  optout_type: form
+  verified: false
+  notes: PeopleConnect property; opt-out routes via Intelius.
+
+# ---------------------------------------------------------------------------
+# German directories / people-search (assisted)
+# ---------------------------------------------------------------------------
+- slug: dastelefonbuch
+  name: Das Telefonbuch
+  website: https://www.dastelefonbuch.de
+  country: DE
+  category: directory
+  mode: assisted
+  optout_url: https://www.dastelefonbuch.de/Hilfe
+  optout_type: link
+  verified: false
+
+- slug: dasoertliche
+  name: Das Örtliche
+  website: https://www.dasoertliche.de
+  country: DE
+  category: directory
+  mode: assisted
+  optout_url: https://www.dasoertliche.de/kontakt/
+  optout_type: link
+  verified: false
+
+- slug: "11880"
+  name: "11880"
+  website: https://www.11880.com
+  country: DE
+  category: directory
+  mode: assisted
+  optout_url: https://www.11880.com/datenschutz
+  optout_type: link
+  verified: false
+
+- slug: yasni
+  name: Yasni
+  website: https://www.yasni.de
+  country: DE
+  category: people-search
+  mode: assisted
+  optout_url: https://www.yasni.de/loeschung
+  optout_type: link
+  verified: false
+
+- slug: webmii
+  name: WebMii
+  website: https://webmii.com
+  country: INT
+  category: people-search
+  mode: assisted
+  optout_url: https://webmii.com/contact.aspx
+  optout_type: link
+  verified: false
+
+# ---------------------------------------------------------------------------
+# Data brokers / ad-tech — opt-out / data-access links only (no scanning)
+# ---------------------------------------------------------------------------
+- slug: acxiom
+  name: Acxiom
+  website: https://www.acxiom.com
+  country: US
+  category: data-broker
+  mode: optout_only
+  optout_url: https://isapps.acxiom.com/optout/optout.aspx
+  optout_type: form
+  verified: false
+
+- slug: liveramp
+  name: LiveRamp
+  website: https://liveramp.com
+  country: US
+  category: ad-tech
+  mode: optout_only
+  optout_url: https://liveramp.com/opt_out/
+  optout_type: form
+  verified: true
+
+- slug: epsilon
+  name: Epsilon
+  website: https://www.epsilon.com
+  country: US
+  category: data-broker
+  mode: optout_only
+  optout_url: https://www.epsilon.com/us/consumer-information/consumer-preferences
+  optout_type: form
+  verified: false
+
+- slug: oracle-advertising
+  name: Oracle Advertising
+  website: https://www.oracle.com
+  country: US
+  category: ad-tech
+  mode: optout_only
+  optout_url: https://www.oracle.com/legal/privacy/advertising-privacy-policy.html
+  optout_type: link
+  verified: false
+  notes: Oracle wound down its advertising-data business in 2024; kept for legacy records.
+
+- slug: dun-bradstreet
+  name: Dun & Bradstreet
+  website: https://www.dnb.com
+  country: US
+  category: data-broker
+  mode: optout_only
+  optout_url: https://www.dnb.com/utility-pages/privacy-policy.html
+  optout_type: link
+  verified: false
+
+- slug: experian
+  name: Experian
+  website: https://www.experian.com
+  country: US
+  category: credit-bureau
+  mode: optout_only
+  optout_url: https://www.experian.com/privacy/opting_out
+  optout_type: form
+  verified: false
+
+- slug: schufa
+  name: SCHUFA
+  website: https://www.schufa.de
+  country: DE
+  category: credit-bureau
+  mode: optout_only
+  optout_url: https://www.meineschufa.de/de/datenkopie
+  optout_type: form
+  verified: false
+  notes: Art. 15 GDPR data copy (Datenkopie), not a deletion — informational credit record.
+
+- slug: crif
+  name: CRIF
+  website: https://www.crif.de
+  country: DE
+  category: credit-bureau
+  mode: optout_only
+  optout_url: https://www.crif.de/verbraucher/
+  optout_type: form
+  verified: false
+  notes: Selbstauskunft / Art. 15 GDPR data access.
