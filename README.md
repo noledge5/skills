@@ -179,6 +179,7 @@ General workflow tools, not code-specific.
 
 - **[caveman](./skills/productivity/caveman/SKILL.md)** — Ultra-compressed communication mode. Cuts token usage ~75% by dropping filler while keeping full technical accuracy.
 - **[grill-me](./skills/productivity/grill-me/SKILL.md)** — Get relentlessly interviewed about a plan or design until every branch of the decision tree is resolved.
+- **[organize-disk](./skills/productivity/organize-disk/SKILL.md)** — Drive the DiskButler tool (`tools/disk-butler`) to search, analyse, and safely tidy local drives: fast file search, junk/duplicate cleanup via reversible quarantine, and Windows leftover/autostart hygiene.
 - **[write-a-skill](./skills/productivity/write-a-skill/SKILL.md)** — Create new skills with proper structure, progressive disclosure, and bundled resources.
 
 ### Misc
